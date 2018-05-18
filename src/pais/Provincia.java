@@ -4,20 +4,21 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import org.openxava.annotations.*;
 import org.openxava.model.*;
 
 @Entity
+@Views({ @View(name = "MuySimple", members = "descripcion") })
 public class Provincia extends Identifiable {
 
 	private String descripcion;
 
 	@ManyToOne
 	private Pais pais;
-	
-	@OneToMany(mappedBy="provincia")
+
+	@OneToMany(mappedBy = "provincia")
 	private List<Departamento> departamentos;
-	
-	
+
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -41,6 +42,5 @@ public class Provincia extends Identifiable {
 	public void setDepartamentos(List<Departamento> departamentos) {
 		this.departamentos = departamentos;
 	}
-	
-	
+
 }
