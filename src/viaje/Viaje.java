@@ -13,8 +13,8 @@ import escuela.*;
 import pais.*;
 
 @Entity
-@Views({@View(members="fecha;Lugar{departamento;#salida;destino;escuela;empresa}Otros{contacto;pax;observaciones}")})
-public class Viaje extends Identifiable{
+@Views({ @View(members = "fecha;Lugar{departamento;#salida;destino;escuela;empresa}Otros{contacto;pax;observaciones}") })
+public class Viaje extends Identifiable {
 
 	@ReadOnly
 	@DefaultValueCalculator(CurrentDateCalculator.class)
@@ -22,32 +22,41 @@ public class Viaje extends Identifiable{
 
 	@ManyToOne
 	@DescriptionsList
+	@NoCreate
+	@NoModify
 	private Departamento departamento;
-	
+
 	@ManyToOne
 	@DescriptionsList
+	@NoCreate
+	@NoModify
 	private Localidad salida;
-	
+
 	@ManyToOne
 	@DescriptionsList
+	@NoCreate
+	@NoModify
 	private Localidad destino;
-	
+
 	@ManyToOne
 	@DescriptionsList
+	@NoCreate
+	@NoModify
 	private Escuela escuela;
-	
+
 	@ManyToOne
 	@DescriptionsList
+	@NoCreate
+	@NoModify
 	private Empresa empresa;
-	
+
 	@Stereotype("MEMO")
 	private String observaciones;
-	
+
 	private String contacto;
-	
+
 	private String pax;
-	
-	
+
 	public Date getFecha() {
 		return fecha;
 	}
@@ -119,6 +128,5 @@ public class Viaje extends Identifiable{
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
-	
-	
+
 }

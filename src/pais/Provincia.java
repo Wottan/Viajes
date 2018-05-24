@@ -8,9 +8,10 @@ import org.openxava.annotations.*;
 import org.openxava.model.*;
 
 @Entity
-@Views({ @View(name = "MuySimple", members = "descripcion") })
+@Views({ @View(name = "MuySimple", members = "descripcion"), @View(members = "descripcion;departamentos") })
 public class Provincia extends Identifiable {
 
+	@Required
 	private String descripcion;
 
 	@ManyToOne
