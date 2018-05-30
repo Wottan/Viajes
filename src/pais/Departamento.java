@@ -18,6 +18,7 @@ public class Departamento extends Identifiable {
 	@ReferenceView("MuySimple")
 	private Provincia provincia;
 
+	@NewAction("")
 	@OneToMany(mappedBy = "departamento")
 	private List<Localidad> localidades;
 

@@ -14,7 +14,9 @@ public class Pais extends Identifiable {
 	@Required
 	private String descripcion;
 
-	@OneToMany(mappedBy = "pais", cascade = CascadeType.PERSIST)
+	@NewAction("")
+	@OneToMany(mappedBy = "pais")
+	@ListProperties("descripcion")
 	private List<Provincia> provincias;
 
 	public String getDescripcion() {

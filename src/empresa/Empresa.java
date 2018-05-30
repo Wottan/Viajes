@@ -9,19 +9,23 @@ import escuela.*;
 import pais.*;
 
 @Entity
-public class Empresa extends Identifiable{
-	
+public class Empresa extends Identifiable {
+
 	@Required
 	private String descripcion;
-	
+
 	@ManyToOne
 	@DescriptionsList
+	@NoCreate
+	@NoModify
 	private Departamento departamento;
-	
+
+	@NoCreate
+	@NoModify
 	@ManyToOne
 	@DescriptionsList(depends = "departamento", condition = "${departamento.id}=?")
 	private Localidad localidad;
-	
+
 	@Embedded
 	private Direccion direccion;
 
@@ -56,6 +60,5 @@ public class Empresa extends Identifiable{
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
-	
-	
+
 }

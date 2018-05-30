@@ -17,6 +17,7 @@ public class Provincia extends Identifiable {
 	@ManyToOne
 	private Pais pais;
 
+	@NewAction("")
 	@OneToMany(mappedBy = "provincia")
 	private List<Departamento> departamentos;
 

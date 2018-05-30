@@ -8,21 +8,25 @@ import org.openxava.model.*;
 import pais.*;
 
 @Entity
-public class Escuela extends Identifiable{
+public class Escuela extends Identifiable {
 
 	private String cue;
-	
+
 	@Required
 	private String descripcion;
-	
+
 	@ManyToOne
 	@DescriptionsList
+	@NoCreate
+	@NoModify
 	private Departamento departamento;
-	
+
 	@ManyToOne
+	@NoCreate
+	@NoModify
 	@DescriptionsList(depends = "departamento", condition = "${departamento.id}=?")
 	private Localidad localidad;
-	
+
 	@Embedded
 	private Direccion direccion;
 
@@ -65,8 +69,5 @@ public class Escuela extends Identifiable{
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
-	
-	
-	
-	
+
 }
